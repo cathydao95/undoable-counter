@@ -20,10 +20,11 @@ function Counter() {
 
   useEffect(() => {
     if (undo) {
+      setCount(Number(undo.before));
       setRedo([...redo, undo]);
       setUndo();
     }
-  }, [undo, redo]);
+  }, [undo, redo, count]);
 
   function handleEquation(e) {
     const test = Number(e.target.value);
@@ -43,20 +44,24 @@ function Counter() {
   }
 
   function handleUndo() {
-    if (history.length > 1) {
+    if (history.length > 0) {
       setUndo(history.shift());
+      console.log(undo);
     }
   }
 
-  console.log("UNDO", undo);
-  console.log("history", history);
-
   function handleRedo() {
-    console.log("test");
     let lastRemoved = redo.pop();
     console.log("lastremoved", lastRemoved);
-    history.unshift(lastRemoved);
+    setHistory((prevHistory) => [lastRemoved, ...prevHistory]);
+    console.log("redo", redo);
+    setCount(lastRemoved.after);
   }
+
+  console.log("UNDO", undo);
+
+  console.log("REDO", redo);
+  console.log("history", history);
 
   return (
     <div>
