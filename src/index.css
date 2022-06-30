@@ -1,0 +1,7 @@
+.container {
+  margin: 200px;
+}
+.history {
+  display: flex;
+  gap: 25px;
+}

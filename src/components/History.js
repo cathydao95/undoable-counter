@@ -1,8 +1,8 @@
 function History({ history }) {
-  let allHistory = history.map((item) => {
+  let allHistory = history.map((item, index) => {
     return (
-      <div className="history">
-        <div>{`${item.action > 0 ? "+" : ""}` + item.action} </div>
+      <div key={index} className="history">
+        <div>{`${item.action > 1 ? "+" : ""}` + item.action} </div>
         <div>
           ({item.before} &rarr; {item.after})
         </div>
