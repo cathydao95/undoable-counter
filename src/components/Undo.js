@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 function Undo({ undo, redo, handleUndo, handleRedo }) {
   return (
     <div>
